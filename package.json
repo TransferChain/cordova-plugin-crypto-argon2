@@ -1,0 +1,14 @@
+{
+  "name": "cordova-plugin-crypto-argon2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TransferChain native Argon2 for Android and iOS",
+  "license": "MIT",
+  "cordova": {
+    "id": "cordova-plugin-crypto-argon2",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}

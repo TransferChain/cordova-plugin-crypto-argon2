@@ -1,0 +1,16 @@
+def pluginSource = new File(rootProject.projectDir, '../../plugins/cordova-plugin-crypto-argon2')
+// Build from the installed plugin source, not generated platform copies.
+// Exclude upstream .so files so the APK contains only the patched implementation.
+android {
+    externalNativeBuild {
+        cmake {
+            path new File(pluginSource, 'src/android/native/CMakeLists.txt')
+            version '3.22.1'
+        }
+    }
+    packagingOptions {
+        jniLibs {
+            excludes += ['**/libargon2jni.so', '**/libargon2native.so']
+        }
+    }
+}

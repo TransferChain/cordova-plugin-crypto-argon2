@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-crypto-argon2" version="1.0.0">
+    <name>Argon2</name>
+    <description>Native Argon2 operations for Android and iOS.</description>
+    <license>MIT</license>
+    <js-module src="www/Argon2.js" name="Argon2">
+        <clobbers target="CryptoKit.Argon2" />
+    </js-module>
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Argon2">
+                <param name="android-package" value="com.transferchain.argon2.Argon2" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/Argon2.java" target-dir="src/com/transferchain/argon2" />
+        <framework src="src/android/argon2.gradle" custom="true" type="gradleReference" />
+        <framework src="com.lambdapioneer.argon2kt:argon2kt:1.6.0" />
+    </platform>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Argon2">
+                <param name="ios-package" value="Argon2" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/Argon2.swift" />
+        <header-file src="src/ios/vendor/argon2/include/argon2.h" target-dir="vendor/argon2/include" />
+        <source-file src="src/ios/vendor/argon2/src/argon2.c" target-dir="vendor/argon2/src" />
+        <source-file src="src/ios/vendor/argon2/src/core.c" target-dir="vendor/argon2/src" />
+        <header-file src="src/ios/vendor/argon2/src/core.h" target-dir="vendor/argon2/src" />
+        <source-file src="src/ios/vendor/argon2/src/encoding.c" target-dir="vendor/argon2/src" />
+        <header-file src="src/ios/vendor/argon2/src/encoding.h" target-dir="vendor/argon2/src" />
+        <source-file src="src/ios/vendor/argon2/src/ref.c" target-dir="vendor/argon2/src" />
+        <source-file src="src/ios/vendor/argon2/src/thread.c" target-dir="vendor/argon2/src" />
+        <header-file src="src/ios/vendor/argon2/src/thread.h" target-dir="vendor/argon2/src" />
+        <source-file src="src/ios/vendor/argon2/src/blake2/blake2b.c" target-dir="vendor/argon2/src/blake2" />
+        <header-file src="src/ios/vendor/argon2/src/blake2/blake2.h" target-dir="vendor/argon2/src/blake2" />
+        <header-file src="src/ios/vendor/argon2/src/blake2/blake2-impl.h" target-dir="vendor/argon2/src/blake2" />
+        <header-file src="src/ios/vendor/argon2/src/blake2/blamka-round-ref.h" target-dir="vendor/argon2/src/blake2" />
+        <header-file src="src/ios/vendor/argon2/src/argon2.h" target-dir="vendor/argon2/src" />
+        <header-file src="src/ios/TCArgon2Bridge.h" type="BridgingHeader" />
+    </platform>
+</plugin>
